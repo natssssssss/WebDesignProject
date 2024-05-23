@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Alice&family=Rufina:wght@400;700&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <title>Kubiertos</title>
+    <style>
+        body {
+            font-family: "Alice", serif;
+			font-size: 18px;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f9f9f9;
+            padding-bottom: 5rem;
+            background-image: url('https://www.pixelstalk.net/wp-content/uploads/2016/10/Blurry-hd-wallpaper-620x380.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+		
+		h1 {
+	   	  font-family: "Rufina", serif;
+		  font-weight: 700;
+		  font-style: normal;
+		  font-size: 35px;
+		}
+		
+        header {
+            background-color: #3c3c3c;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 1.5rem;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #f0a500;
+        }
+
+        section {
+            padding: 2rem;
+            display: none;
+        }
+		
+		#welcome {
+			background-image: url('https://img.freepik.com/free-photo/man-slicing-fresh-organic-tomato-healthy-meal-generated-by-ai_188544-40154.jpg?t=st=1716484227~exp=1716487827~hmac=cc03889cf7a6bd664009baea9b784196dda200a3680b87fb2024712e8bb96bdf&w=1060');
+			background-repeat: no-repeat;
+			background-size: cover;
+			color: #fff; 
+            padding-bottom: 15rem;
+		}
+
+
+        h2 {
+            color: #ffffff;
+            border-bottom: 2px solid #f0a500;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .product {
+            border: 1px solid #e0e0e0;
+            background-color: #fff;
+            margin: 1rem;
+            padding: 1rem;
+            text-align: center;
+            width: calc(33% - 2rem);
+            box-sizing: border-box;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .product img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+		
+        .add-to-cart {
+            background-color: #f0a500;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .add-to-cart:hover {
+            background-color: #d48c00;
+        }
+
+        #cart {
+            padding: 2rem;
+            display: none;
+        }
+
+        #cart h2 {
+            margin-top: 0;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        footer {
+            background-color: #3c3c3c;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #cart-count {
+            background-color: #f0a500;
+            color: #fff;
+            padding: 0.2rem 0.5rem;
+            border-radius: 50%;
+        }
+
+        .checkout-form {
+            display: flex;
+            flex-direction: column;
+            margin-top: 1rem;
+        }
+
+        .checkout-form label {
+            margin-top: 0.5rem;
+        }
+
+        .checkout-form input {
+            padding: 0.5rem;
+            margin-top: 0.2rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .checkout-form .short-input {
+            width: 50%;
+        }
+
+        #checkout {
+            margin-top: 1rem; 
+        }
+
+        .customer-details {
+            margin-top: 1rem;
+        }
+
+        .gray-container {
+            background-color: rgba(128, 128, 128, 0.5); 
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            color: #ffffff;
+        }
+		
+		#receipt {
+			padding: 2rem;
+			margin-top: 2rem; 
+			margin-bottom: 2rem; 
+		}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>KUBIERTOS</h1>
+        <nav>
+            <ul>
+                <li><a data-target="welcome" class="nav-link">Welcome</a></li>
+                <li><a data-target="about" class="nav-link">About Us</a></li>
+                <li><a data-target="products" class="nav-link">Product List</a></li>
+                <li><a data-target="contact" class="nav-link">Contact</a></li>
+                <li class="cart-info"><a href="#" id="cart-link">Cart (<span id="cart-count">0</span>)</a></li>
+            </ul>
+        </nav>
+    </header>
+	
+    <section id="welcome" class="welcome-section">
+        <h2>Welcome</h2>
+		<div class="gray-container">
+        <p>Welcome to Kubiertos, your premier destination for top-quality kitchen and dining tools! Located in the heart of Manila, 
+        we are dedicated to providing our customers with a wide range of utensils that cater to all your culinary needs. Whether you are 
+        a professional chef, home cook, or simply a food enjoyer, our carefully curated selection of products ensures you have the best 
+        tools to create and eat delicious meals.</p>
+		</div>
+    </section>
+
+    <section id="about">
+        <h2>About Us</h2>
+		<div class="gray-container">
+        <p>At Kubiertos, we believe that great cooking starts with the right equipment. Our catalog includes everything from cutting-edge 
+        knives and versatile cookware to elegant cutlery and unique kitchen gadgets. We source our products from trusted manufacturers, 
+        ensuring durability, functionality, and style in every piece.</p>
+        <p>Our commitment to excellence extends beyond our products. We pride ourselves on offering exceptional customer service, 
+        competitive prices, and a seamless online shopping experience. Whether you’re looking to upgrade your kitchen tools or find the 
+        perfect gift for a culinary enthusiast, Kubiertos is here to meet your needs.</p>
+		</div>
+    </section>
+
+    <section id="products">
+        <h2>Product List</h2>
+        <div class="product-list">
+            <div class="product" data-name="Eren" data-price="100">
+                <img src="https://www.ikea.com/ph/en/images/products/trebent-chopsticks-4-pairs-bamboo__0713331_pe729440_s5.jpg?f=xl" alt="Product 1">
+                <h3>Eren</h3>
+                <p>₱100.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Mikasa" data-price="200">
+                <img src="https://www.ikea.com/ph/en/images/products/upphoejd-12-piece-flatware-set-beige__0942140_pe796027_s5.jpg?f=xl" alt="Product 2">
+                <h3>Mikasa</h3>
+                <p>₱200.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Erwin" data-price="300">
+                <img src="https://www.ikea.com/ph/en/images/products/lindrig-knife-dark-brown__0713266_pe729376_s5.jpg?f=xl" alt="Product 3">
+                <h3>Erwin</h3>
+                <p>₱300.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Jean" data-price="400">
+                <img src="https://www.ikea.com/ph/en/images/products/martorp-30-piece-flatware-set-stainless-steel__0713264_pe729374_s5.jpg?f=xl" alt="Product 4">
+                <h3>Jean</h3>
+                <p>₱400.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Armin" data-price="500">
+                <img src="https://www.ikea.com/ph/en/images/products/behagfull-24-piece-flatware-set-stainless-steel__0711350_pe728193_s5.jpg?f=xl" alt="Product 5">
+                <h3>Armin</h3>
+                <p>₱500.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Levi" data-price="600">
+                <img src="https://www.ikea.com/ph/en/images/products/tillagd-24-piece-flatware-set-black__0713323_pe729432_s5.jpg?f=xl" alt="Product 6">
+                <h3>Levi</h3>
+                <p>₱600.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Historia" data-price="700">
+                <img src="https://www.ikea.com/ph/en/images/products/foerslag-3-piece-knife-set__0710424_pe727544_s5.jpg?f=xl" alt="Product 7">
+                <h3>Historia</h3>
+                <p>₱700.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Ymir" data-price="800">
+                <img src="https://www.ikea.com/ph/en/images/products/grunka-4-piece-kitchen-utensil-set-stainless-steel__0711741_pe728430_s5.jpg?f=xl" alt="Product 8">
+                <h3>Ymir</h3>
+                <p>₱800.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Sasha" data-price="900">
+                <img src="https://www.ikea.com/ph/en/images/products/fullaendad-5-piece-kitchen-utensil-set-gray__0711751_pe728440_s5.jpg?f=xl" alt="Product 9">
+                <h3>Sasha</h3>
+                <p>₱900.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+		<div class="gray-container">
+        <p>Email us at <a href="mailto:kubiertos.phils@gmail.com">kubiertos.phils@gmail.com</a></p>
+		<a href="https://www.facebook.com/AdamsonUniversity.Official">Facebook</a>
+		<p></p>
+		<p>Location:</p>
+		<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d965.3075784537594!2d120.98564639489003!3d14.585948086334737!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sph!4v1716485963310!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+		
+		</div>
+    </section>
+
+    <section id="cart">
+        <h2>Cart</h2>
+		<div class="gray-container">
+        <ul id="cart-items"></ul>
+        <p id="total-price"></p>
+		<form class="checkout-form">
+			<label for="name">Name:</label>
+			<input type="text" id="name" name="name" class="short-input" required>
+			<label for="address">Address:</label>
+			<input type="text" id="address" name="address" required>
+			<label for="contactno">Contact Number:</label>
+			<input type="tel" id="contactno" name="contactno" class="short-input" pattern="[0-9]*" inputmode="numeric" required>
+		</form>
+
+        <button id="checkout">Check Out</button>
+        <button id="clear-cart">Clear Cart</button>
+		</div>
+    </section>
+
+    <div id="receipt" class="hidden">
+        <h2>Receipt</h2>
+		<div class="gray-container">
+        <ul id="receipt-items"></ul>
+        <p id="receipt-total"></p>
+        <div class="customer-details">
+            <p id="customer-name"></p>
+            <p id="customer-address"></p>
+            <p id="customer-contactno"></p>
+        </div>
+        <button id="close-receipt">Close</button>
+		</div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Kubiertos. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cart = [];
+            const cartLink = document.getElementById('cart-link');
+            const cartCount = document.getElementById('cart-count');
+            const cartItems = document.getElementById('cart-items');
+            const totalPrice = document.getElementById('total-price');
+            const checkoutButton = document.getElementById('checkout');
+            const clearCartButton = document.getElementById('clear-cart'); 
+            const receipt = document.getElementById('receipt');
+            const receiptItems = document.getElementById('receipt-items');
+            const receiptTotal = document.getElementById('receipt-total');
+            const closeReceipt = document.getElementById('close-receipt');
+            const customerName = document.getElementById('customer-name');
+            const customerAddress = document.getElementById('customer-address');
+            const customerContact = document.getElementById('customer-contactno');
+			
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const product = event.target.closest('.product');
+                    const productName = product.getAttribute('data-name');
+                    const productPrice = parseFloat(product.getAttribute('data-price'));
+
+                    const cartItem = cart.find(item => item.name === productName);
+
+                    if (cartItem) {
+                        cartItem.quantity += 1;
+                    } else {
+                        cart.push({ name: productName, price: productPrice, quantity: 1 });
+                    }
+
+                    updateCart();
+                });
+            });
+
+            cartLink.addEventListener('click', (event) => {
+                event.preventDefault();
+                document.querySelectorAll('section').forEach(section => {
+                    section.style.display = 'none';
+                });
+                document.getElementById('cart').style.display = 'block';
+            });
+
+            clearCartButton.addEventListener('click', () => {
+                cart.length = 0; // Clear the cart array
+                updateCart();
+            });
+
+            checkoutButton.addEventListener('click', () => {
+                let total = 0;
+                receiptItems.innerHTML = '';
+
+                cart.forEach(item => {
+                    const receiptItem = document.createElement('li');
+                    receiptItem.textContent = `${item.name} - Quantity: ${item.quantity} - Price: ₱${item.price * item.quantity}`;
+                    receiptItems.appendChild(receiptItem);
+                    total += item.price * item.quantity;
+                });
+
+                receiptTotal.textContent = `Total: ₱${total}`;
+                customerName.textContent = `Name: ${document.getElementById('name').value}`;
+                customerAddress.textContent = `Address: ${document.getElementById('address').value}`;
+                customerContact.textContent = `Contact Number: ${document.getElementById('contactno').value}`;
+                receipt.classList.remove('hidden');
+                document.getElementById('cart').style.display = 'none';
+            });
+
+            closeReceipt.addEventListener('click', () => {
+                receipt.classList.add('hidden');
+                document.querySelectorAll('section').forEach(section => {
+                    section.style.display = 'none';
+                });
+                document.getElementById('welcome').style.display = 'block';
+            });
+
+            function updateCart() {
+                cartCount.textContent = cart.reduce((acc, item) => acc + item.quantity, 0);
+                cartItems.innerHTML = '';
+                let total = 0;
+
+                cart.forEach(item => {
+                    const cartItem = document.createElement('li');
+                    cartItem.textContent = `${item.name} - Quantity: ${item.quantity} - Price: ₱${item.price * item.quantity}`;
+                    cartItems.appendChild(cartItem);
+                    total += item.price * item.quantity;
+                });
+
+                totalPrice.textContent = `Total: ₱${total}`;
+            }
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', (event) => {
+                    const targetId = event.target.getAttribute('data-target');
+                    document.querySelectorAll('section').forEach(section => {
+                        section.style.display = 'none';
+                    });
+                    document.getElementById(targetId).style.display = 'block';
+                });
+            });
+
+            document.getElementById('welcome').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
